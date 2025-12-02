@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            background-image:url(asset/calcy.jpg);
+            background-repeat:no-repeat;
+            background-size:cover;
+            align-items: center;
+        }
+        #cal{
+            width: 300px;
+            height: 500px;
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 20px;
+            /* background-color: rgb(100, 115, 115); */
+            text-align: center;
+        }
+        #cal:hover{
+            box-shadow: 10px 5px 5px black;
+        }
+        input{
+            border-radius: 10px;
+           border-width: 10px;
+        }
+        #result{
+            width: 230px;
+            height: 30px;
+            margin-bottom: 10px;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+        button{
+            width: 60px;
+            height: 70px;
+            margin: 2px;
+            border-radius: 20px;
+            font-size: 25px;  
+            cursor: pointer; 
+        }
+        button:active{
+            box-shadow: 0 5px #666;
+            transform: translateY(3px);
+        }
+        button:hover{
+            background-color: rgb(174, 165, 165);
+             border-width: 10px;
+        }
+     </style>
+</head>
+<body>
+   <div id="cal">
+     <input type="text" id="result" readonly>   
+         <button onclick="clearResult()">C</button>
+         <button onclick="deleteLast()">Del</button>
+         <button onclick="appendToresult('.')"> . </button>
+         <button onclick="appendToresult('/')"> / </button>
+         <br>
+         <button onclick="appendToresult('7')"> 7 </button>
+         <button onclick="appendToresult('8')"> 8 </button>
+         <button onclick="appendToresult('9')"> 9 </button>
+         <button onclick="appendToresult('+')"> + </button>
+         <br>
+         <button onclick="appendToresult('4')"> 4 </button>
+         <button onclick="appendToresult('5')"> 5 </button>
+         <button onclick="appendToresult('6')"> 6 </button>
+         <button onclick="appendToresult('-')"> - </button>
+         <br>
+         <button onclick="appendToresult('1')"> 1 </button>
+         <button onclick="appendToresult('2')"> 2 </button>
+         <button onclick="appendToresult('3')"> 3 </button>
+         <button onclick="appendToresult('*')"> x </button>
+         <br>
+         
+         <button onclick="appendToresult('0')"> 0 </button>
+         <button onclick="calculateResult()"> = </button>
+   </div>
+<script>
+  const result=document.getElementById("result");
+
+  function appendToresult(input){
+      result.value += input;
+  }
+
+  function clearResult(){
+    result.value = "";
+  }
+  
+  function deleteLast(){
+    result.value = result.value.slice(0,-1); 
+  }
+
+  function calculateResult(){
+    try{
+        result.value = eval(result.value);
+    }
+    catch(error){
+        result.value="error";
+    }
+}
+
+
+</script>
+
+       
+
+ 
+    
+    
+</body>
+</html>
